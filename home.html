@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <script>
+        fetch('bebs.html')
+            .then((response) => response.text())
+            .then((html) => {
+                const withHomeTitle = html.replace(/<title>[\s\S]*?<\/title>/i, '<title>Home</title>');
+                document.open();
+                document.write(withHomeTitle);
+                document.close();
+            })
+            .catch(() => {
+                document.body.innerHTML = '<p style="font-family: Arial, sans-serif; padding: 20px;">Unable to load Home page.</p>';
+            });
+    </script>
+</body>
+</html>
